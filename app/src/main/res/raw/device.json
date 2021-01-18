@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "update_time": "2020-07-23",
+  "author": "hawesome",
+  "log": "create this file and T7 Model",
+  "types": [
+    {
+      "name": "XST-7T",
+      "type": "T7",
+      "zones": [
+        {"location": "0002","items": ["PSH","PSL","PDH","PDL","Pole"]},
+        {"location": "0008","items": ["In","Inm","Un","Fn","Controller"]},
+        {"location": "000F","items": ["Voltage"]},
+        {"location": "2000","items": ["CtrlMode:3","CtrlCode:0","Switch:0","OtherSwitch:0"]},
+        {"location": "2004","items": ["Ul:90","Uo:110","UlR:93","UoR:107"]},
+        {"location": "2008","items": ["Fl:950","Fo:1050","FlR:970","FoReturn:1030"]},
+        {"location": "200C","items": ["Uun:10","UunR:5","DvU:20","DvF:10","DvP:20"]},
+        {"location": "2100","items": ["QS1OffT:30","QS1OnT:30","QS2OffT:30","QS2OnT:30","QS3OffT:30"]},
+        {"location": "2105","items": ["QS3OnT:30","QTOffT:30","QTOnT:30","GenOffT:300","GenOnT:300"]},
+        {"location": "2200","items": ["DI1:5","DI2:6","DI3:3"]},
+        {"location": "2203","items": ["UnW","FnW","PoleW"]},
+        {"location": "3000","items": ["EventLog:0","TrsfLog:0","AlarmLog:0"]},
+        {"location": "4000","items": ["Comm:82","Protocol:77","Address:1"]},
+        {"location": "4003","items": ["Baudrate:9600","Parity:0","StopBit:2"]},
+        {"location": "6000","items": ["TrsfTime:0"],"log": true},
+        {"location": "7000","items": ["AlarmTime:0"],"log": true},
+        {"location": "8000","items": ["EventTime:0"],"log": true},
+        {"location": "A000","items": ["TimeYM","TimeDH","TimeMS"]}
+      ],
+      "cells": [
+        {"type":"datetime","tags": ["PDH", "PDL", "TimeYM", "TimeDH", "TimeMS"]},
+        {"type":"serial","tags": ["PSH", "PSL"]},
+        {"type":"segment","tags":["Inm"],"items":["2500","4000","6300"],"section":"breaker"},
+        {"type":"refer","tags":["In"],"items":["2500:400/630/800/1000/1250/1600/2000/2500","4000:1000/1250/1600/2000/2500/3200/4000","6300:4000/5000/6300"],"unit":"Inm"},
+        {"type":"segment","tags":["Pole","PoleW"],"items":["3/3P","4/3P+N"]},
+        {"type":"segment","tags":["Un","UnW"],"items":["400/AC400","415/AC415"]},
+        {"type":"segment","tags":["Fn","FnW"],"items":["50","60"]},
+        {"type":"segment","tags":["Controller"],"items":["21569/TA","21570/TB"],"section":""},
+        {"type":"segment","tags":["Voltage"],"items":["70/has","87/none"]}
+      ]
+    }
+  ]
+}
